@@ -1,40 +1,35 @@
-# Hello World Web Application
+# Hello World Java Web Application
 
-This repository contains a simple static web application and a GitHub Actions workflow to deploy it to GitHub Pages.
+This repository now contains a simple Java Spring Boot web application that serves a `Hello World` page.
 
 ## What is included
 
-- `index.html` — displays a Hello World page and loads content from `message.txt`
-- `message.txt` — editable text that is shown in the page
-- `.github/workflows/pages.yml` — GitHub Actions workflow that deploys the site to GitHub Pages on push to `main`
+- `pom.xml` — Maven build file for a Spring Boot web app
+- `src/main/java/com/example/helloworld/HelloWorldApplication.java` — Spring Boot app with a `GET /` endpoint
+- `.github/workflows/azure-webapp-deploy.yml` — GitHub Actions workflow to build and deploy to Azure
 
-## How to use
+## Run locally
 
-1. Open a terminal in `hello-world-webapp`
-2. Initialize the repo if not already:
-   ```sh
-   git init
-   git add .
-   git commit -m "Initial commit"
+1. Install Java 17 and Maven.
+2. From the repo root:
+   ```powershell
+   mvn clean package
+   java -jar target/hello-world-webapp-0.0.1-SNAPSHOT.jar
    ```
-3. Create a GitHub repository and add it as a remote, for example:
-   ```sh
-   git remote add origin https://github.com/<your-username>/hello-world-webapp.git
-   git branch -M main
-   git push -u origin main
-   ```
-4. When the push completes, the workflow will deploy the site to GitHub Pages.
+3. Open `http://localhost:8080` in your browser.
 
-## Update the page
+## Deploy to Azure App Service
 
-- Edit `message.txt`
-- Commit and push the change
-- Browse the site URL again to see the updated message
+1. Create an Azure Web App (Linux) and download the publish profile.
+2. Add a GitHub secret named `AZURE_WEBAPP_PUBLISH_PROFILE` with the publish profile contents.
+3. Replace `<your-app-name>` in `.github/workflows/azure-webapp-deploy.yml`.
+4. Commit and push to `main`.
 
-## GitHub Pages URL
+The app will be available at:
 
-The deployed URL will typically be:
+`https://<your-app-name>.azurewebsites.net`
 
-`https://<your-username>.github.io/hello-world-webapp/`
+## Notes
 
-If you want the site to deploy immediately after push, make sure GitHub Pages is enabled for the repository and the workflow has run successfully.
+- This is a Java web application, not a static HTML site.
+- You can remove `index.html` and `message.txt` if you no longer need the old static site files.
