@@ -43,23 +43,13 @@
   <body>
     <div class="card">
       <h1>Hello World</h1>
-      <p>This is a simple web application repository ready for GitHub Actions deployment.</p>
-      <div class="message" id="message">Loading message...</div>
-      <pre><code>To update this page, edit <strong>message.txt</strong> and push to GitHub.</code></pre>
+      <p>This is a simple JavaScript Hello World page served from GitHub and Azure.</p>
+      <div class="message" id="message">Loading...</div>
+      <pre><code>Edit <strong>index.html</strong> and push to GitHub to update this page.</code></pre>
     </div>
 
     <script>
-      async function loadMessage() {
-        try {
-          const response = await fetch('message.txt');
-          if (!response.ok) throw new Error('File not found');
-          const text = await response.text();
-          document.getElementById('message').textContent = text.trim();
-        } catch (error) {
-          document.getElementById('message').textContent = 'Unable to load message.txt. Please create or update the file.';
-        }
-      }
-      loadMessage();
+      document.getElementById('message').textContent = 'Hello World test';
     </script>
   </body>
 </html>

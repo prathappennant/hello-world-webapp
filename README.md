@@ -1,29 +1,24 @@
-# Hello World Java Web Application
+# Hello World Static Web Application
 
-This repository now contains a simple Java Spring Boot web application that serves a `Hello World` page.
+This repository now contains a simple static HTML and JavaScript site that displays `Hello World`.
 
 ## What is included
 
-- `pom.xml` — Maven build file for a Spring Boot web app
-- `src/main/java/com/example/helloworld/HelloWorldApplication.java` — Spring Boot app with a `GET /` endpoint
-- `.github/workflows/azure-webapp-deploy.yml` — GitHub Actions workflow to build and deploy to Azure
+- `index.html` — static HTML page with JavaScript
+- `.github/workflows/azure-webapp-deploy.yml` — GitHub Actions workflow to deploy to Azure App Service
 
 ## Run locally
 
-1. Install Java 17 and Maven.
-2. From the repo root:
-   ```powershell
-   mvn clean package
-   java -jar target/hello-world-webapp-0.0.1-SNAPSHOT.jar
-   ```
-3. Open `http://localhost:8080` in your browser.
+1. Open `index.html` in a browser, or use a static server.
+2. The page displays `Hello World test` using JavaScript.
 
 ## Deploy to Azure App Service
 
-1. Create an Azure Web App (Linux) and download the publish profile.
-2. Add a GitHub secret named `AZURE_WEBAPP_PUBLISH_PROFILE` with the publish profile contents.
-3. Replace `<your-app-name>` in `.github/workflows/azure-webapp-deploy.yml`.
-4. Commit and push to `main`.
+1. Create an Azure Web App (Linux).
+2. Download the publish profile from the Web App.
+3. Add a GitHub secret named `AZURE_WEBAPP_PUBLISH_PROFILE` with the publish profile contents.
+4. Replace `<your-app-name>` in `.github/workflows/azure-webapp-deploy.yml`.
+5. Commit and push to `main`.
 
 The app will be available at:
 
@@ -31,5 +26,5 @@ The app will be available at:
 
 ## Notes
 
-- This is a Java web application, not a static HTML site.
-- You can remove `index.html` and `message.txt` if you no longer need the old static site files.
+- This is a static web app, not a Java backend app.
+- You can remove Spring Boot files if they still exist from previous work.
