@@ -7,3 +7,5 @@ Thumbs.db
 
 # Ignore node_modules if you add JS tooling later
 node_modules/
+
+target/
